@@ -1,3 +1,27 @@
-.App {
+.App{
+  color:white;
   text-align: center;
+}
+body{
+  background-color: rgb(25, 9, 63);
+}
+.agents-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+
+}
+
+.agents-wrap{
+  display: flex;
+  flex-direction: column;
+}
+.agent-name{
+
+  text-align: center;
+
+}
+.agents-container{
+  display: flex;
+  justify-content: center;
+
 }

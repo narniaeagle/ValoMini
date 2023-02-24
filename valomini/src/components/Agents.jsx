@@ -3,13 +3,6 @@ import axios from 'axios'
 
 export default function Data () {
  
-    //making a state to set data in √
-    //setting up a useeffect to control my components lifecycle √
-    //organize API links / url √
-    // make the darned API call, right?√
-    //set our data in state and log it√
-    // render our data √
-    //set up Guard Operator √
 
     const [agent, setAgent] = useState({})
 
@@ -25,20 +18,21 @@ export default function Data () {
 
     console.log(agent.data)
 
-    //Returns go INSIDE of our IF ELSE
-    // Ternaries go INSIDE of our Returns
-
 
     if(agent.data){
     return (  
         <div>
+            <div className="agents-grid">
             {agent.data.map((info) =>
-            <div>
-            <h2>{info.displayName}</h2>
-            <img src={info.fullPortrait} style={{width:"24rem",height:"24rem"}}/>
-  
+            info.isPlayableCharacter ?
+            <div key ={info.uuid}  className="agents-container" style={{backgroundColor:"#"+(info.backgroundGradientColors[3])}}>
+                <div className="agents-wrap">
+            <h2 className="agent-name" style={{backgroundColor:"#"+(info.backgroundGradientColors[2]), color:"#"+(info.backgroundGradientColors[1]) }}>{info.displayName}</h2>
+            <img src={info.fullPortrait} style={{maxWidth:"24rem",maxHeight:"24rem", backgroundColor:"#"+(info.backgroundGradientColors[0]), borderRadius:"8rem"}}/>
             </div>
+            </div>: null
             )}
+            </div>
         </div>
     )}
     else{
