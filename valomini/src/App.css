@@ -7,21 +7,31 @@ body{
 }
 .agents-grid{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
 .agents-wrap{
   display: flex;
   flex-direction: column;
 }
 .agent-name{
-
   text-align: center;
-
 }
-.agents-container{
+.agents-card{
   display: flex;
   justify-content: center;
+}
 
+.agent-container{
+  display: grid;
+  grid-template-columns: 1fr minmax(8rem, 2fr) 1fr;
+  border: red solid 5px;
+}
+.agent-left{
+  border: red solid 5px;
+}
+.agent-middle{
+  border: red solid 5px;
+}
+.agent-right{
+  border: red solid 5px;
 }

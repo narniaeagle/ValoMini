@@ -1,12 +1,14 @@
 import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { Data } from "../Data";
+import { useNavigate } from "react-router-dom"
 
 export default function Agents () {
  
 
     const [agent, setAgent] = useState({})
     const { info, setInfo } = useContext(Data)
+    let navigate = useNavigate()
 
     useEffect(() => {
         const url = 'https://valorant-api.com/v1/agents'
@@ -17,17 +19,21 @@ export default function Agents () {
         getAgents()
     },[])
 
+    const showAgent = (i) => {
+        navigate(`${i.uuid}`)
+      }
+
 
     if(agent.data){
     return (  
         <div>
             <div className="agents-grid">
             {agent.data.map((i) =>
-            i.isPlayableCharacter && i.displayName == info.agent || i.isPlayableCharacter && info.agent == '' ?
-            <div key ={i.uuid}  className="agents-container" style={{backgroundColor:"#"+(i.backgroundGradientColors[3])}}>
+            (i.isPlayableCharacter && i.displayName.toLowerCase().includes(info.agent.toLowerCase())) || (i.isPlayableCharacter && info.agent === '') ?
+            <div key ={i.uuid} onClick={() => showAgent(i)} className="agents-card" style={{backgroundColor:"#"+(i.backgroundGradientColors[3])}}>
                 <div className="agents-wrap">
             <h2 className="agent-name" style={{backgroundColor:"#"+(i.backgroundGradientColors[2]), color:"#"+(i.backgroundGradientColors[1]) }}>{i.displayName}</h2>
-            <img src={i.fullPortrait} style={{maxWidth:"24rem",maxHeight:"24rem", backgroundColor:"#"+(i.backgroundGradientColors[0]), borderRadius:"8rem"}}/>
+            <img src={i.fullPortrait} alt="Agent" style={{backgroundColor:"#"+(i.backgroundGradientColors[0]), borderRadius:"8rem", maxWidth:'100%', height:'auto'}}/>
             </div>
             </div>: null
             )}

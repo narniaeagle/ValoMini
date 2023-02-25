@@ -7,7 +7,7 @@ export default function Search () {
     const { info, setInfo } = useContext(Data)
     
     useEffect(() => {
-        const url = 'https://valorant-api.com/v1/agents' // url's last part going to change depending on page
+        const url = 'https://valorant-api.com/v1/agents'
         const getAgents = async () => {
             const response = await axios.get(url)
             setAgent(response.data)
