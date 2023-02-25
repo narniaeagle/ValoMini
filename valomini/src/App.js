@@ -1,16 +1,22 @@
 import './App.css'
 import Header from './components/Header'
 import Main from './components/Main'
+import { useState } from 'react'
+import { Data } from './Data';
 
 function App() {
+
+  const [info, setInfo] = useState({
+    agent:'',
+    weapon:''
+  })
+
   return (
     <div className="App">
-      <div className='header-container'>
+      <Data.Provider value={{info, setInfo}}>
         <Header />
-      </div>
-      <div className='main-container'>
         <Main />
-      </div>
+      </Data.Provider>
     </div>
   )
 }
