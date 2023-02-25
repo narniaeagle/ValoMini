@@ -8,6 +8,7 @@ export default function Nav () {
         <div>
             <Link to='/'>Home</Link>
             <Link to='/agents'>Agents</Link>
+            <Link to='/weapons'>Weapons</Link>
             <Search />
         </div>
     )

@@ -2,23 +2,18 @@
   color:white;
   text-align: center;
 }
+#title1{
+  color: rgb(255, 70, 84);
+}
+#title2{
+  color: rgb(255, 253, 198);
+}
 body{
   background-color: rgb(25, 9, 63);
 }
 .agents-grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-.agents-wrap{
-  display: flex;
-  flex-direction: column;
-}
-.agent-name{
-  text-align: center;
-}
-.agents-card{
-  display: flex;
-  justify-content: center;
 }
 
 .agent-container{
@@ -34,4 +29,12 @@ body{
 }
 .agent-right{
   border: red solid 5px;
+}
+
+#home{
+  background-image: url("https://media.valorant-api.com/playercards/69265fa9-4c85-e728-d332-4a84857fd84e/wideart.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:40%;
 }

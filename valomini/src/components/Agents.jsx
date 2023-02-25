@@ -29,7 +29,7 @@ export default function Agents () {
         <div>
             <div className="agents-grid">
             {agent.data.map((i) =>
-            (i.isPlayableCharacter && i.displayName.toLowerCase().includes(info.agent.toLowerCase())) || (i.isPlayableCharacter && info.agent === '') ?
+            (i.isPlayableCharacter && i.displayName.toLowerCase().includes(info.search.toLowerCase())) || (i.isPlayableCharacter && info.search === '') ?
             <div key ={i.uuid} onClick={() => showAgent(i)} className="agents-card" style={{backgroundColor:"#"+(i.backgroundGradientColors[3])}}>
                 <div className="agents-wrap">
             <h2 className="agent-name" style={{backgroundColor:"#"+(i.backgroundGradientColors[2]), color:"#"+(i.backgroundGradientColors[1]) }}>{i.displayName}</h2>

@@ -7,7 +7,7 @@ import { Data } from './Data';
 function App() {
 
   const [info, setInfo] = useState({
-    agent:'',
+    search:'',
     weapon:''
   })
 
