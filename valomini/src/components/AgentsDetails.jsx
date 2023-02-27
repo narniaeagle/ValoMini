@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
 export default function AgentsDetails ()  {
-    const [agent, setAgent] = useState([]) // defining as an empty array for find function (it works on arrays)
+    const [agent, setAgent] = useState([]) 
 
 
     const { agents_id } = useParams()
@@ -21,7 +21,8 @@ export default function AgentsDetails ()  {
     )
 
         console.log(slct)
-  return slct ? (
+        if(slct){
+  return (
     <div>
         <div className="agent-container">
             <div className="agent-left">
@@ -54,5 +55,6 @@ export default function AgentsDetails ()  {
 
         </div>
     </div>
-  ) : null
+  ) }
+  else return (<h1>Loading</h1>)
 }

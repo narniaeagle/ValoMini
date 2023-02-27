@@ -38,3 +38,6 @@ body{
   background-position: center;
   background-size:40%;
 }
+video{
+  padding-bottom:4rem;
+}
