@@ -20,7 +20,7 @@ export default function AgentsDetails ()  {
       (a) => a.uuid === agents_id
     )
 
-        console.log(slct)
+        //console.log(slct)
         if(slct){
   return (
     <div>

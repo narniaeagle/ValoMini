@@ -39,17 +39,17 @@ export default function AgentsDetails ()  {
       console.log(videosrc)
       video.load()
       video.addEventListener("canplaythrough", function() {
-        video.play();
-      });
-      window.scrollTo(0, document.body.scrollHeight) // it doesn't scrolls down to the very bottom neeeds to be used inside useEffect
-    }                                                // maybe I will fix it
+        video.play()
+      })
+      window.scrollTo(0, document.body.scrollHeight) 
+    }                                               
     window.onscroll = function() {
       const video = document.querySelector('#video')
-      if (!video.paused) {
-        video.pause();
+      if(video){ // added this condition because of Cannot read properties of null (reading 'pause')
+        video.pause()
       }
     }
-        console.log(slct)
+        //console.log(slct)
         if(slct){
   return (
     <div>
@@ -79,12 +79,12 @@ export default function AgentsDetails ()  {
       )}
 
         </div>
+        <a href="#top">Back to top of page</a>
         <div>
         <video id="video" width="80%" height='auto' controls>
   <source id="source" src="" type="video/mp4"/>
         </video>
         </div>
-        <a href="#top">Back to top of page</a>
     </div>
   ) }
   else return (<h1>Loading</h1>)

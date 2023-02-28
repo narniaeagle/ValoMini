@@ -8,7 +8,7 @@ function App() {
 
   const [info, setInfo] = useState({
     search:'',
-    weapon:''
+    search2:''
   })
 
   return (

@@ -1,12 +1,20 @@
+@font-face {
+  font-family: 'Valorant';
+  src: local('valorant'), url(./components/Fonts/valorant.ttf) format('truetype');
+}
+
+
 .App{
   color:white;
   text-align: center;
 }
 #title1{
   color: rgb(255, 70, 84);
+  font-family: 'Valorant';
 }
 #title2{
   color: rgb(255, 253, 198);
+  font-family: 'Valorant';
 }
 body{
   background-color: rgb(25, 9, 63);
