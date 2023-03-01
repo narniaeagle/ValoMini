@@ -2,12 +2,15 @@ import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { Data } from "../Data";
 import { useParams } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 
 export default function AgentsDetails ()  {
     const [weapon, setWeapon] = useState([])
     const { info, setInfo } = useContext(Data)
 
     const { weapons_id } = useParams()
+
+    let navigate = useNavigate()
 
     useEffect(() => {
             const url = 'https://valorant-api.com/v1/weapons'
@@ -38,10 +41,10 @@ export default function AgentsDetails ()  {
       source.src=videosrc
       console.log(videosrc)
       video.load()
+      video.focus()
       video.addEventListener("canplaythrough", function() {
         video.play()
       })
-      window.scrollTo(0, document.body.scrollHeight) 
     }                                               
     window.onscroll = function() {
       const video = document.querySelector('#video')
@@ -49,20 +52,24 @@ export default function AgentsDetails ()  {
         video.pause()
       }
     }
+
+    function previousPage(){
+      navigate(-1)
+  }
         //console.log(slct)
         if(slct){
   return (
     <div>
-        <div className="agents-grid">
+        <div className="grid">
         
         {slct.skins.map((i, index) =>
         (i.displayName.toLowerCase().includes(info.search.toLowerCase())) || (i.displayName && info.search === '') ?
                 <div>
-            <div>{i.displayName}</div>
+            <div className="weapon-name">{i.displayName}</div>
             {i.levels.map((level, index3) =>
             (i.levels.length > 1) ?
             <>
-              <button videosrc={level.streamedVideo} value3={index3} onClick={openVideo}>Level{index3 + 1} </button>
+              <button className="level-button" videosrc={level.streamedVideo} value3={index3} onClick={openVideo}>Level{index3 + 1} </button>
               
             </>:null
             )}
@@ -79,13 +86,16 @@ export default function AgentsDetails ()  {
       )}
 
         </div>
-        <a href="#top">Back to top of page</a>
+        <a href="#top" className='top-button'>Back to the top of page</a>
         <div>
         <video id="video" width="80%" height='auto' controls>
   <source id="source" src="" type="video/mp4"/>
         </video>
         </div>
+        <div>
+           <img onClick={previousPage} alt="back arrow icon"className="agent-backbutton" style={{width:"20%" }}src="https://cdn-icons-png.flaticon.com/512/0/340.png"></img>
+        </div>
     </div>
   ) }
-  else return (<h1>Loading</h1>)
+  else return (<h1 className='loading'>Loading...</h1>)
 }

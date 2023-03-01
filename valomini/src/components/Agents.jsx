@@ -20,6 +20,7 @@ export default function Agents () {
     },[])
 
     const showAgent = (i) => {
+        setInfo({...info, search: ''})
         navigate(`${i.uuid}`)
       }
 
@@ -27,7 +28,7 @@ export default function Agents () {
     if(agent.data){
     return (  
         <div>
-            <div className="agents-grid">
+            <div className="grid">
             {agent.data.map((i) =>
             (i.isPlayableCharacter && i.displayName.toLowerCase().includes(info.search.toLowerCase())) || (i.isPlayableCharacter && info.search === '') ?
             <div key ={i.uuid} onClick={() => showAgent(i)} className="agents-card" style={{backgroundColor:"#"+(i.backgroundGradientColors[3])}}>
@@ -42,7 +43,7 @@ export default function Agents () {
     )}
     else{
         return(
-            <h1>Loading</h1>
+            <h1 className='loading'>Loading...</h1>
         )
     }
   }

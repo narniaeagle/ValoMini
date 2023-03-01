@@ -2,12 +2,23 @@
   font-family: 'Valorant';
   src: local('valorant'), url(./components/Fonts/valorant.ttf) format('truetype');
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Gajraj+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
 
 .App{
   color:white;
   text-align: center;
 }
+
+body{
+  background-color: rgb(25, 9, 63);
+}
+.header-title{
+  background-color: rgb(90, 8, 15);
+}
+/* title */
 #title1{
   color: rgb(255, 70, 84);
   font-family: 'Valorant';
@@ -16,36 +27,129 @@
   color: rgb(255, 253, 198);
   font-family: 'Valorant';
 }
-body{
-  background-color: rgb(25, 9, 63);
-}
-.agents-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
+/* title */
 
-.agent-container{
+/* AgentDetails */
+.agent-grid{
   display: grid;
   grid-template-columns: 1fr minmax(8rem, 2fr) 1fr;
-  border: red solid 5px;
+  border: rgb(255, 253, 198) solid 5px;
 }
+.agent-name{
+  font-family: 'Jockey One', sans-serif;
+}
+.agent-title{
+  font-family: 'Bangers', cursive;
+}
+
 .agent-left{
   border: red solid 5px;
 }
+.agent-skills{
+  font-family: "Gajraj One", cursive;
+}
+.agent-skillslot{
+  font-family: "Gajraj One", cursive;
+}
+.agent-skillname{
+  font-family: 'Bangers', cursive;
+}
+
 .agent-middle{
   border: red solid 5px;
 }
+.agent-description{
+  font-family: 'Neucha', cursive;
+}
+
 .agent-right{
   border: red solid 5px;
 }
+.agent-skilldescription{
+  font-family: 'Neucha', cursive;
+}
+.agent-backbutton{
+  width:40%;
+  height:auto;
+}
+/*AgentDetails*/
+
+
+.searchbar{
+  margin-bottom: 2rem;
+}
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.weapon-category{
+  font-family: 'Jockey One', sans-serif;
+  margin-left: 0.3rem;
+  margin-bottom: 1.8rem;
+  border: 3px solid rgb(158, 158, 246);
+  color: rgb(255, 255, 255);
+  background-color: rgb(68, 5, 218);
+  height:2rem;
+  width: 5rem;
+  border-radius: 3rem;
+
+}
+.weapon-category:hover{
+  border-color: rgb(68, 5, 218);
+  background-color: rgb(158, 158, 246);
+}
+.weapon-name{
+  font-family: 'Jockey One', sans-serif;
+}
+.level-button{
+  font-family: 'Jockey One', sans-serif;
+
+  background-color: rgb(145, 33, 33);
+  color: rgb(255, 119, 0);
+  margin-left: 0.3rem;
+}
+.top-button{
+  font-family: 'Jockey One', sans-serif;
+  color:white;  
+  text-decoration: none;
+  border-color: rgb(68, 5, 218);
+  background-color: rgb(158, 158, 246);
+}
+
+.navbuttons{
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+.navbutton{
+  color:red;
+  background-color:wheat;
+  text-decoration: none;
+
+  font-family: 'Jockey One', sans-serif;
+  margin-left: 0.3rem;
+  margin-bottom: 1.8rem;
+  border: 5px solid rgb(255, 70, 84);
+  color: rgb(255, 255, 255);
+  background-color: rgb(90, 8, 15);
+  height:1.7rem;
+  width: 6rem;
+  border-radius: 3rem;
+}
+.navbutton:hover{
+  border-color: rgb(90, 8, 15);
+  background-color: rgb(255, 70, 84);
+
+}
 
 #home{
+  font-family: 'Gajraj One';
   background-image: url("https://media.valorant-api.com/playercards/69265fa9-4c85-e728-d332-4a84857fd84e/wideart.png");
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
   background-size:40%;
 }
-video{
-  padding-bottom:4rem;
+.loading{
+  font-family: "Gajraj One", cursive;
 }

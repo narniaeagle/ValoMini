@@ -9,14 +9,14 @@ export default function Search () {
 
     function handleInput(e){
         e.preventDefault()
-
+        
         setInfo({...info, search: e.target.value})
-    }
-
+    }  
+   
     return (
         <div>
-            <form>
-            <input placeholder='Viper' value={info.search} onChange={handleInput}></input>
+            <form className='searchbar' onSubmit={(e)=>e.preventDefault()}> 
+            <input id="#search" placeholder='Viper' type="text" value={info.search} onChange={handleInput}></input>
             </form>
         </div>
     )

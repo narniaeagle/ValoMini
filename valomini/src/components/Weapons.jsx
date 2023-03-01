@@ -20,6 +20,7 @@ export default function Agents () {
     },[])
 
     const showWeapon = (i) => {
+        setInfo({...info, search: ''})
         navigate(`${i.uuid}`)
       }
       //console.log(weapon.data)
@@ -30,7 +31,7 @@ export default function Agents () {
         if(i.category.split("::")[1] !== lastCategory){
             lastCategory= i.category.split("::")[1]
             return(
-                <button value={i.category.split("::")[1]} onClick={showCategories}>{i.category.split("::")[1]}</button>
+                <button className="weapon-category"value={i.category.split("::")[1]} onClick={showCategories}>{i.category.split("::")[1]}</button>
             )
         }
       }
@@ -50,7 +51,7 @@ export default function Agents () {
             {weapon.data.map((i) => categories(i) 
             )}
 
-            <div className="agents-grid">
+            <div className="grid">
             {weapon.data.map((i) =>
             ( i.displayName.toLowerCase().includes(info.search.toLowerCase()) && (i.category.split("::")[1].includes(info.search2) && info.search2 !== '')) || // search2 buttons pressed inside search
              ( i.displayName.toLowerCase().includes(info.search.toLowerCase()) && info.search2 === '') || // search2 is disabled all search
@@ -58,8 +59,8 @@ export default function Agents () {
                (info.search === '' && info.search2 === '')  ? // show all if search (searchbar) and search2 (buttons) are empty
             <div key ={i.uuid} name={i.category.split("::")[1]} onClick={() => showWeapon(i)}>
                 
-            <h2>{i.displayName} ({i.category.split("::")[1]})</h2>
-            <img src={i.displayIcon} alt="Agent" style={{ maxWidth:'100%', height:'auto'}}/>
+            <h2 className="weapon-name">{i.displayName} ({i.category.split("::")[1]})</h2>
+            <img src={i.displayIcon} alt="Weapon" style={{ maxWidth:'100%', height:'auto'}}/>
 
             </div>: null
             )}
@@ -68,7 +69,7 @@ export default function Agents () {
     )}
     else{
         return(
-            <h1>Loading</h1>
+            <h1 className='loading'>Loading...</h1>
         )
     }
   }
