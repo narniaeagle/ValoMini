@@ -26,18 +26,18 @@ export default function AgentsDetails ()  {
     function previousPage(){
         navigate(-1)
     }
-        //console.log(slct)
+
         if(slct){
   return (
     <div>
         <div className="agent-grid" style={{backgroundColor:"#"+(slct.backgroundGradientColors[3]), borderColor: "#"+(slct.backgroundGradientColors[0])}}>
             <div className="agent-left" style={{borderColor: "#"+(slct.backgroundGradientColors[0])}}>
                 <h2 className="agent-title">Skills</h2>
-                {slct.abilities.map((i) =>
-                <div>
-            <h4 className="agent-skillslot">{i.slot}</h4>
-            <h5 className="agent-skillname">{i.displayName}</h5>
-            {i.displayIcon ?<img src={i.displayIcon} alt="Icon" style={{ maxWidth:"30%"}}/>
+                {slct.abilities.map((i, index) =>
+                <div key={"leftrow-"+index}>
+            <h4 key={"left-"+i.slot} className="agent-skillslot">{i.slot}</h4>
+            <h5 key={"left-"+i.displayName} className="agent-skillname">{i.displayName}</h5>
+            {i.displayIcon ?<img key={"skillimg-"+index} src={i.displayIcon} alt="Icon" style={{ maxWidth:"30%"}}/>
             :<h6>Passives don't have an image at the moment</h6>
             }
             </div>
@@ -54,10 +54,10 @@ export default function AgentsDetails ()  {
             </div>
             <div className="agent-right" style={{borderColor: "#"+(slct.backgroundGradientColors[0])}}>
                 <h2 className="agent-title">Skill Descriptions</h2>
-            {slct.abilities.map((i) =>
-            <div>
-                 <h4 className="agent-skillname">{i.displayName}</h4>
-                <h5 className="agent-skilldescription">{i.description}</h5>
+            {slct.abilities.map((i, index) =>
+            <div key={"rightrow-"+index}>
+                 <h4 key={"right-"+i.displayName} className="agent-skillname">{i.displayName}</h4>
+                <h5 key={"right-"+index} className="agent-skilldescription">{i.description}</h5>
             </div>
             )}
             <div>

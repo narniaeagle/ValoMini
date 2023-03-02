@@ -2,8 +2,9 @@ import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { Data } from "../Data";
 import { useNavigate } from "react-router-dom"
+import Search from "./Search"
 
-export default function Agents () {
+export default function Weapons () {
  
 
     const [weapon, setWeapon] = useState({})
@@ -23,15 +24,14 @@ export default function Agents () {
         setInfo({...info, search: ''})
         navigate(`${i.uuid}`)
       }
-      //console.log(weapon.data)
 
 
-      let lastCategory = ''
-      function categories(i){
-        if(i.category.split("::")[1] !== lastCategory){
-            lastCategory= i.category.split("::")[1]
+      let lastCategory = []
+      function categories(i, index){
+            if (lastCategory.indexOf(i.category.split("::")[1]) === -1) { // indexOf returns -1 if the category name is not in the array
+                lastCategory.push(i.category.split("::")[1])
             return(
-                <button className="weapon-category"value={i.category.split("::")[1]} onClick={showCategories}>{i.category.split("::")[1]}</button>
+                <button key={index} className="weapon-category"value={i.category.split("::")[1]} onClick={showCategories}>{i.category.split("::")[1]}</button>
             )
         }
       }
@@ -48,19 +48,20 @@ export default function Agents () {
     if(weapon.data){
     return (  
         <div>
-            {weapon.data.map((i) => categories(i) 
+            <Search/>
+            {weapon.data.map((i, index) => categories(i, index) 
             )}
 
             <div className="grid">
-            {weapon.data.map((i) =>
+            {weapon.data.map((i, index) =>
             ( i.displayName.toLowerCase().includes(info.search.toLowerCase()) && (i.category.split("::")[1].includes(info.search2) && info.search2 !== '')) || // search2 buttons pressed inside search
              ( i.displayName.toLowerCase().includes(info.search.toLowerCase()) && info.search2 === '') || // search2 is disabled all search
               (i.category.split("::")[1].toLowerCase() === info.search.toLowerCase()) || // search by tags
                (info.search === '' && info.search2 === '')  ? // show all if search (searchbar) and search2 (buttons) are empty
-            <div key ={i.uuid} name={i.category.split("::")[1]} onClick={() => showWeapon(i)}>
+            <div key ={i.uuid} className="space-between"onClick={() => showWeapon(i)}>
                 
-            <h2 className="weapon-name">{i.displayName} ({i.category.split("::")[1]})</h2>
-            <img src={i.displayIcon} alt="Weapon" style={{ maxWidth:'100%', height:'auto'}}/>
+            <h2 key={i.displayName} className="weapon-name">{i.displayName} ({i.category.split("::")[1]})</h2>
+            <img key={"weaponimg-"+index} src={i.displayIcon} alt="Weapon" style={{ maxWidth:'100%', height:'auto'}}/>
 
             </div>: null
             )}

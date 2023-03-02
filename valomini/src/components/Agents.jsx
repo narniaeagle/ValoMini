@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { Data } from "../Data";
 import { useNavigate } from "react-router-dom"
+import Search from "./Search"
 
 export default function Agents () {
  
@@ -28,14 +29,13 @@ export default function Agents () {
     if(agent.data){
     return (  
         <div>
+            <Search/>
             <div className="grid">
             {agent.data.map((i) =>
             (i.isPlayableCharacter && i.displayName.toLowerCase().includes(info.search.toLowerCase())) || (i.isPlayableCharacter && info.search === '') ?
-            <div key ={i.uuid} onClick={() => showAgent(i)} className="agents-card" style={{backgroundColor:"#"+(i.backgroundGradientColors[3])}}>
-                <div className="agents-wrap">
-            <h2 className="agent-name" style={{backgroundColor:"#"+(i.backgroundGradientColors[2]), color:"#"+(i.backgroundGradientColors[1]) }}>{i.displayName}</h2>
-            <img src={i.fullPortrait} alt="Agent" style={{backgroundColor:"#"+(i.backgroundGradientColors[0]), borderRadius:"8rem", maxWidth:'100%', height:'auto'}}/>
-            </div>
+            <div key={i.uuid} onClick={() => showAgent(i)} className="space-between" style={{backgroundColor:"#"+(i.backgroundGradientColors[3])}}>
+                <h2 key={i.displayName} className="agent-name" style={{backgroundColor:"#"+(i.backgroundGradientColors[2]), color:"#"+(i.backgroundGradientColors[1]) }}>{i.displayName}</h2>
+                <img key={"agentimg-"+i.displayName} src={i.fullPortrait} alt="Agent" style={{backgroundColor:"#"+(i.backgroundGradientColors[0]), borderRadius:"8rem", maxWidth:'100%', height:'auto'}}/>
             </div>: null
             )}
             </div>

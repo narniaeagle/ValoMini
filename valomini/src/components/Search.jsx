@@ -16,7 +16,7 @@ export default function Search () {
     return (
         <div>
             <form className='searchbar' onSubmit={(e)=>e.preventDefault()}> 
-            <input id="#search" placeholder='Viper' type="text" value={info.search} onChange={handleInput}></input>
+            <input id="search" type="text" value={info.search} onChange={handleInput}></input>
             </form>
         </div>
     )

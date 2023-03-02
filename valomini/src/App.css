@@ -28,7 +28,17 @@ body{
   font-family: 'Valorant';
 }
 /* title */
-
+#search{
+  background-color: rgb(255, 70, 84);
+  color:rgb(255, 253, 198);
+  border: solid rgb(255, 253, 198) 0.2rem;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+}
+.space-between{
+  margin-left:0.8rem;
+  margin-bottom: 0.8rem;
+}
 /* AgentDetails */
 .agent-grid{
   display: grid;

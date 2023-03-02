@@ -3,11 +3,11 @@ import axios from 'axios'
 import { Data } from "../Data";
 import { useParams } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
+import Search from "./Search"
 
-export default function AgentsDetails ()  {
+export default function WeaponsDetails ()  {
     const [weapon, setWeapon] = useState([])
-    const { info, setInfo } = useContext(Data)
-
+    const { info } = useContext(Data)
     const { weapons_id } = useParams()
 
     let navigate = useNavigate()
@@ -39,7 +39,6 @@ export default function AgentsDetails ()  {
       let video = document.querySelector("#video")
       let source = document.querySelector("#source")
       source.src=videosrc
-      console.log(videosrc)
       video.load()
       video.focus()
       video.addEventListener("canplaythrough", function() {
@@ -56,31 +55,31 @@ export default function AgentsDetails ()  {
     function previousPage(){
       navigate(-1)
   }
-        //console.log(slct)
+
+
         if(slct){
   return (
     <div>
+      <Search/>
         <div className="grid">
         
         {slct.skins.map((i, index) =>
         (i.displayName.toLowerCase().includes(info.search.toLowerCase())) || (i.displayName && info.search === '') ?
-                <div>
-            <div className="weapon-name">{i.displayName}</div>
+                <div key={i.uuid} className="space-between">
+            <div key={"weaponname-"+index} className="weapon-name">{i.displayName}</div>
             {i.levels.map((level, index3) =>
             (i.levels.length > 1) ?
-            <>
-              <button className="level-button" videosrc={level.streamedVideo} value3={index3} onClick={openVideo}>Level{index3 + 1} </button>
-              
-            </>:null
+            <span key={"level-"+index+"-"+index3}>
+              <button  className="level-button" videosrc={level.streamedVideo} value3={index3} onClick={openVideo}>Level{index3 + 1} </button>
+            </span>:null
             )}
-            <img id={"weapon"+index} src={i.chromas[0].fullRender} alt="Icon" style={{ maxWidth:"100%", height:'auto'}}/>
+            <img key={"weaponimg-"+index} id={"weapon"+index} src={i.chromas[0].fullRender} alt="Icon" style={{ maxWidth:"100%", height:'auto'}}/>
             
             {i.chromas.map((chroma , index2) =>
             (i.chromas.length > 1) ?
-            <>
-              <img src={chroma.swatch} value2={index2} value={index} onClick={changeImage} alt="Swatch" style={{ maxWidth:"10%", heigth:'auto'}}></img>
-              
-            </>: null
+            <span key={"chroma-"+index+"-"+index2}>
+              <img  src={chroma.swatch} value2={index2} value={index} onClick={changeImage} alt="Swatch" style={{ maxWidth:"10%", heigth:'auto'}}></img>
+            </span>: null
             )}
             </div>:null
       )}
