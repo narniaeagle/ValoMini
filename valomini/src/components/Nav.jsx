@@ -8,7 +8,9 @@ export default function Nav () {
     const { info, setInfo } = useContext(Data)
     function clearSearch(){
         setInfo({...info, search: '', search2: ''});
-        document.querySelector('#search').value = '';
+        if(document.querySelector('#search')){
+            document.querySelector('#search').value = '';
+        }
     }
 
     return (
