@@ -85,7 +85,7 @@ export default function WeaponsDetails ()  {
       )}
 
         </div>
-        <a href="#top" className='top-button'>Back to the top of page</a>
+        <button className='top-button' onClick = {()=>{document.documentElement.scrollTop = 0}}>Back to the top of page</button>
         <div>
         <video id="video" width="80%" height='auto' controls>
   <source id="source" src="" type="video/mp4"/>
